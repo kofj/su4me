@@ -19,10 +19,10 @@ var (
 func init() {
 
 	// Parse flags.
-	pflag.Int("port", 0, "Listen port")
-	pflag.Int("min", 0, "min length")
-	pflag.String("salt", "", "hash salt")
-	pflag.String("wd", "var", "work dir")
+	pflag.StringP("add", "a", "0:2345", "server <addr>:<port>")
+	pflag.IntP("min", "m", 0, "min length")
+	pflag.StringP("salt", "s", "", "hash salt")
+	pflag.StringP("wd", "w", "var", "work dir")
 	pflag.Parse()
 
 	// Load config and set default values.
@@ -31,7 +31,7 @@ func init() {
 	viper.AddConfigPath(".")
 	viper.AddConfigPath("etc")
 	viper.AddConfigPath("/etc/su4me")
-	viper.SetDefault("port", 2345)
+	viper.SetDefault("addr", "0:2345")
 	viper.SetDefault("min", 3)
 	viper.SetDefault("salt", "aaa")
 	viper.SetDefault("wd", "var")
