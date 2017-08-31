@@ -23,6 +23,7 @@ func init() {
 	pflag.IntP("min", "m", 0, "min length")
 	pflag.StringP("salt", "s", "", "hash salt")
 	pflag.StringP("wd", "w", "var", "work dir")
+	pflag.String("db", "su4me", "database name")
 	pflag.Parse()
 
 	// Load config and set default values.
