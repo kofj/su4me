@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 
-	"github.com/boltdb/bolt"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 )
@@ -14,7 +13,6 @@ var (
 	sha2id = []byte("sha2id")
 	id2url = []byte("id2url")
 
-	db  *bolt.DB
 	err error
 )
 
@@ -44,13 +42,4 @@ func init() {
 		log.Fatalln(err)
 	}
 
-	// Open database.
-	db, err = bolt.Open(viper.GetString("wd")+"/ddz.db", 0600, nil)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	// Create buckets.
-	createBuckets(sha2id)
-	createBuckets(id2url)
 }
