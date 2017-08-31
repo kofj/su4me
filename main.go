@@ -7,6 +7,10 @@ import (
 	"github.com/spf13/viper"
 )
 
+var (
+	db *bolt.DB
+)
+
 func main() {
 	// Open database.
 	db, err = bolt.Open(viper.GetString("wd")+"/"+viper.GetString("db")+".db", 0600, nil)
