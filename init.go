@@ -8,6 +8,8 @@ import (
 	"github.com/spf13/viper"
 )
 
+const defaultAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"
+
 var (
 	sha2id = []byte("sha2id")
 	id2url = []byte("id2url")
@@ -36,6 +38,7 @@ func init() {
 	viper.SetDefault("min", 3)
 	viper.SetDefault("salt", "aaa")
 	viper.SetDefault("wd", "var")
+	viper.SetDefault("alphabet", defaultAlphabet)
 	err = viper.ReadInConfig() // Find and read the config file
 	if err != nil {
 		log.Fatalln(err)
